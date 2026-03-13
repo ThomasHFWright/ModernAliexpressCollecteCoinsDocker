@@ -587,7 +587,7 @@ if __name__ == "__main__":
     env_headless = env_bool("HEADLESS", False)
     env_locale = os.getenv("LOCALE", "poland")
     env_use_korea = env_bool("USE_KOREA", False)
-    env_schedule = env_bool("SCHEDULE", False)
+    env_schedule = env_bool("SCHEDULE", True)
 
     parser = argparse.ArgumentParser(
         description="AliExpress Coin Collector - Automated coin collection with anti-detection"
