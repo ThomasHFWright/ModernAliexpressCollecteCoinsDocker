@@ -31,6 +31,14 @@ if hasattr(sys.stdout, "reconfigure"):
 
 load_dotenv()
 
+
+def env_bool(name: str, default: bool = False) -> bool:
+    """Read boolean values from env vars (1/true/yes/on)."""
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return value.strip().lower() in {"1", "true", "yes", "on"}
+
 # Initialize human behavior simulator
 human_sim = HumanBehaviorSimulator()
 
@@ -576,30 +584,37 @@ def main(headless: bool = False, locale: str = "", use_korea: bool = False) -> N
 
 
 if __name__ == "__main__":
+    env_locale = os.getenv("LOCALE", "poland")
+    env_use_korea = env_bool("USE_KOREA", False)
+    env_schedule = env_bool("SCHEDULE", True)
+
     parser = argparse.ArgumentParser(
         description="AliExpress Coin Collector - Automated coin collection with anti-detection"
     )
     parser.add_argument(
         "--headless",
-        action="store_true",
-        help="Run browser in headless mode (no visible window)"
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Run browser in headless mode (default: True)"
     )
     parser.add_argument(
         "--locale",
         type=str,
         choices=["poland", "us_east"],
-        default="poland",
-        help="Select locale/timezone for the user profile (default: poland)"
+        default=env_locale,
+        help=f"Select locale/timezone for the user profile (default from LOCALE env: {env_locale})"
     )
     parser.add_argument(
         "--use-korea",
-        action="store_true",
-        help="Enable country change to Korea before collecting coins (default: disabled)"
+        action=argparse.BooleanOptionalAction,
+        default=env_use_korea,
+        help=f"Enable country change to Korea before collecting coins (default from USE_KOREA env: {env_use_korea})"
     )
     parser.add_argument(
         "--schedule",
-        action="store_true",
-        help="Run in scheduled mode - execute once per day at random time between 10:00-14:00"
+        action=argparse.BooleanOptionalAction,
+        default=env_schedule,
+        help=f"Run in scheduled mode (default from SCHEDULE env: {env_schedule})"
     )
 
     args = parser.parse_args()
