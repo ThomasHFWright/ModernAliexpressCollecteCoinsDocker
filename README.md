@@ -55,7 +55,7 @@ The script now simulates a **real mobile device**:
    HEADLESS=true
    LOCALE=poland
    USE_KOREA=false
-   SCHEDULE=false
+   SCHEDULE=true
    ```
 
 ## Usage

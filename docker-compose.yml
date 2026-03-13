@@ -12,6 +12,6 @@ services:
       HEADLESS: ${HEADLESS:-true}
       LOCALE: ${LOCALE:-poland}
       USE_KOREA: ${USE_KOREA:-false}
-      SCHEDULE: ${SCHEDULE:-false}
+      SCHEDULE: ${SCHEDULE:-true}
     shm_size: "1gb"
     restart: unless-stopped
