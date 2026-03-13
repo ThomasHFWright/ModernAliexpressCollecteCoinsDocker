@@ -5,8 +5,6 @@ services:
     build:
       context: https://github.com/ThomasHFWright/ModernAliexpressCollecteCoinsDocker.git
       dockerfile: Dockerfile
-    env_file:
-      - .env
     environment:
       ALIEXPRESS_EMAIL: ${ALIEXPRESS_EMAIL:-}
       ALIEXPRESS_PASSWORD: ${ALIEXPRESS_PASSWORD:-}
