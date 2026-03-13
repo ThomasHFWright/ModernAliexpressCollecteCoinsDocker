@@ -38,28 +38,45 @@ The script now simulates a **real mobile device**:
    cd AliExpress-Coin-Collector
    ```
 
-2. Install required packages:
+2. Install dependencies with the install script:
    ```
-   pip install -r requirements.txt
-   ```
-
-3. Install Playwright browser dependencies:
-   ```
-   playwright install
+   ./install.sh
    ```
 
-4. Create a `.env` file for your credentials:
+3. Create a `.env` file for your credentials and runtime settings:
    ```
    cp .env.example .env
    ```
 
-5. Edit the `.env` file with your AliExpress login credentials:
+4. Edit the `.env` file with your AliExpress login credentials and options:
    ```
    ALIEXPRESS_EMAIL=your_actual_email@example.com
    ALIEXPRESS_PASSWORD=your_actual_password
+   HEADLESS=true
+   LOCALE=poland
+   USE_KOREA=false
+   SCHEDULE=false
    ```
 
 ## Usage
+
+
+### Docker Compose
+
+1. Copy the env file and set values:
+   ```bash
+   cp .env.example .env
+   ```
+2. Build and run:
+   ```bash
+   docker compose up --build
+   ```
+
+The container reads these environment variables from `.env`:
+- `HEADLESS` (`true`/`false`)
+- `LOCALE` (`poland` or `us_east`)
+- `USE_KOREA` (`true`/`false`)
+- `SCHEDULE` (`true`/`false`)
 
 ### Basic Usage (Manual Run)
 
@@ -74,6 +91,9 @@ python main.py
 ```bash
 # Run in headless mode (no visible browser window)
 python main.py --headless
+
+# Explicitly disable headless mode
+python main.py --no-headless
 
 # Use different locale/timezone
 python main.py --locale us_east    # Available: poland (default), us_east

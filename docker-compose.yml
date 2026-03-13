@@ -1,0 +1,17 @@
+services:
+  coin-collector:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      ALIEXPRESS_EMAIL: ${ALIEXPRESS_EMAIL:-}
+      ALIEXPRESS_PASSWORD: ${ALIEXPRESS_PASSWORD:-}
+      HEADLESS: ${HEADLESS:-true}
+      LOCALE: ${LOCALE:-poland}
+      USE_KOREA: ${USE_KOREA:-false}
+      SCHEDULE: ${SCHEDULE:-false}
+    shm_size: "1gb"
+    restart: unless-stopped
