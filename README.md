@@ -72,8 +72,7 @@ The script now simulates a **real mobile device**:
    docker compose up --build
    ```
 
-The container reads these environment variables from `.env`:
-- `HEADLESS` (`true`/`false`)
+The container reads these environment variables from `.env` (Docker always runs with `--headless`):
 - `LOCALE` (`poland` or `us_east`)
 - `USE_KOREA` (`true`/`false`)
 - `SCHEDULE` (`true`/`false`)
