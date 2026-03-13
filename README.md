@@ -52,7 +52,6 @@ The script now simulates a **real mobile device**:
    ```
    ALIEXPRESS_EMAIL=your_actual_email@example.com
    ALIEXPRESS_PASSWORD=your_actual_password
-   HEADLESS=true
    LOCALE=poland
    USE_KOREA=false
    SCHEDULE=true
@@ -91,7 +90,7 @@ python main.py
 # Run in headless mode (no visible browser window)
 python main.py --headless
 
-# Explicitly disable headless mode
+# Explicitly disable headless mode (local run only; Docker always runs headless)
 python main.py --no-headless
 
 # Use different locale/timezone

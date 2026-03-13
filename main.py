@@ -584,7 +584,6 @@ def main(headless: bool = False, locale: str = "", use_korea: bool = False) -> N
 
 
 if __name__ == "__main__":
-    env_headless = env_bool("HEADLESS", False)
     env_locale = os.getenv("LOCALE", "poland")
     env_use_korea = env_bool("USE_KOREA", False)
     env_schedule = env_bool("SCHEDULE", True)
@@ -595,8 +594,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--headless",
         action=argparse.BooleanOptionalAction,
-        default=env_headless,
-        help=f"Run browser in headless mode (default from HEADLESS env: {env_headless})"
+        default=True,
+        help="Run browser in headless mode (default: True)"
     )
     parser.add_argument(
         "--locale",
