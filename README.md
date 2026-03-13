@@ -34,8 +34,8 @@ The script now simulates a **real mobile device**:
 
 1. Clone this repository:
    ```
-   git clone https://github.com/YOUR_USERNAME/AliExpress-Coin-Collector.git
-   cd AliExpress-Coin-Collector
+   git clone https://github.com/ThomasHFWright/ModernAliexpressCollecteCoins.git
+   cd ModernAliexpressCollecteCoins
    ```
 
 2. Install dependencies with the install script:
@@ -70,6 +70,11 @@ The script now simulates a **real mobile device**:
    ```bash
    docker compose up --build
    ```
+
+`docker-compose.yml` is configured to build directly from this GitHub repository, which works well in Portainer stacks. You can:
+- Upload/paste only `docker-compose.yml`
+- Define variables in Portainer's **Environment variables** section (or provide a `.env` file)
+- Deploy without manually cloning the repo on the host
 
 The container reads these environment variables from `.env` (Docker always runs with `--headless`):
 - `LOCALE` (`poland` or `us_east`)

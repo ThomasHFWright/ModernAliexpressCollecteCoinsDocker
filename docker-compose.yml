@@ -1,11 +1,12 @@
 services:
   coin-collector:
+    # Build directly from GitHub so Portainer can deploy this stack
+    # using only this compose file + environment variables.
     build:
-      context: .
+      context: https://github.com/ThomasHFWright/ModernAliexpressCollecteCoins.git
       dockerfile: Dockerfile
     env_file:
-      - path: .env
-        required: false
+      - .env
     environment:
       ALIEXPRESS_EMAIL: ${ALIEXPRESS_EMAIL:-}
       ALIEXPRESS_PASSWORD: ${ALIEXPRESS_PASSWORD:-}
