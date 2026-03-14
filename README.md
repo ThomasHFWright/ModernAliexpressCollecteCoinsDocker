@@ -26,8 +26,7 @@ The script now simulates a **real mobile device**:
 
 ## Prerequisites
 
-- Python 3.7+
-- Playwright library
+- Docker and Docker Compose
 - A valid AliExpress account
 
 ## Installation
